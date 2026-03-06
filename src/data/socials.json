@@ -1,0 +1,34 @@
+{
+  "socials": [
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@jrprxd1",
+      "visible": true
+    },
+    {
+      "id": "soundcloud",
+      "name": "SoundCloud",
+      "url": "https://soundcloud.com/jrpxrd1111111",
+      "visible": true
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "url": "https://spotify.com",
+      "visible": true
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "url": "https://www.instagram.com/jrprxd_",
+      "visible": true
+    },
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "url": "https://tiktok.com",
+      "visible": true
+    }
+  ]
+}

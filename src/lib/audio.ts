@@ -24,7 +24,8 @@ export function getAllTracks(): Track[] {
 }
 
 export function getFeaturedTrack(): Track {
-  return resolveTrack(tracksData.tracks[0]);
+  const featured = tracksData.tracks.find((t) => t.featured);
+  return resolveTrack(featured || tracksData.tracks[0]);
 }
 
 export function getTrackById(id: string): Track | undefined {
@@ -42,7 +43,7 @@ export function getLatestTracks(count: number = 4): Track[] {
   return [...tracksData.tracks]
     .sort(
       (a, b) =>
-        new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+        new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(),
     )
     .slice(0, count)
     .map(resolveTrack);

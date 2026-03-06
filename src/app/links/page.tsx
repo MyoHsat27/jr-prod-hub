@@ -1,4 +1,5 @@
 import LinksClient from "./LinksClient";
+import socialsData from "@/data/socials.json";
 
 export const metadata = {
   title: "Links | Jr Prod",
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function LinksPage() {
-  return <LinksClient />;
+  return <LinksClient socials={socialsData.socials} />;
 }
