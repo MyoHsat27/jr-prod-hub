@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="group relative">
           <span className="font-cyber text-lg font-bold tracking-widest neon-text-cyan">
-            JR://PROD
+            J.P
           </span>
           <span className="absolute -bottom-1 left-0 h-px w-0 bg-cyber-cyan shadow-[0_0_8px_rgba(0,240,255,0.5)] transition-all duration-300 group-hover:w-full" />
         </Link>

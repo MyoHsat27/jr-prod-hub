@@ -116,7 +116,7 @@ export default function LoginPage() {
         {/* Decorative corners */}
         <div className="mt-6 text-center">
           <span className="font-cyber text-[9px] tracking-wider text-neutral-700">
-            JR://PROD DASHBOARD v1.0
+            JR://PROD DASHBOARD
           </span>
         </div>
       </motion.div>

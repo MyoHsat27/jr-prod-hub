@@ -105,7 +105,7 @@ export default function LinksClient({ socials }: { socials: SocialLink[] }) {
               }}
             >
               <span className="font-cyber text-lg font-bold neon-text-cyan">
-                JP
+                J.P
               </span>
             </div>
           </div>
