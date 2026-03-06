@@ -1,0 +1,52 @@
+{
+  "tracks": [
+    {
+      "id": "hope-youre-still-there-edm-ft-itsmxn",
+      "title": "hope youre still there EDM [ft. itsMxn]",
+      "genre": "EDM",
+      "cover": "https://drive.google.com/file/d/1T9uiW_o-y0_m_uro5ymwj_2FW8-lkTAP/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/1BNvmi1BaIrzMdl8Uui4WFOEHXxXJjFWe/view?usp=sharing",
+      "releaseDate": "2026-03-01"
+    },
+    {
+      "id": "stay-alive-funk",
+      "title": "Stay Alive Funk",
+      "genre": "FUNK",
+      "cover": "https://drive.google.com/file/d/1oFgPFHVeuapaNCnxGLJjYwLm-8aiKgFY/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/143ZsKpYNWB0f2Ud_nqiTX-VYGmlsWmHt/view?usp=drive_link",
+      "releaseDate": "2026-02-15"
+    },
+    {
+      "id": "underwater",
+      "title": "underwater",
+      "genre": "R&B",
+      "cover": "https://drive.google.com/file/d/1BBrnZM_girfjeq9xDP8v0MR8E5vHIduZ/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/1d0PpMxVFhfvZ75DVdziXIhN-fN7iGDvs/view?usp=drive_link",
+      "releaseDate": "2026-02-01"
+    },
+    {
+      "id": "i-really-want-to-stay-at-your-home-sexy-drill",
+      "title": "I Really Want to Stay at Your Home (Sexy Drill)",
+      "genre": "Sexy Drill",
+      "cover": "https://drive.google.com/file/d/1AN9WZOB-LsFC9cQUg5-JHi5V1zrfxKI8/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/1jgs1rcgHusgPDfK5UhMrbXdOxytYkUKQ/view?usp=drive_link",
+      "releaseDate": "2026-01-20"
+    },
+    {
+      "id": "hope-youre-still-there-ft-itsmxn",
+      "title": "hope youre still there (ft. itsMxN)",
+      "genre": "Hip-Hop",
+      "cover": "https://drive.google.com/file/d/1T9uiW_o-y0_m_uro5ymwj_2FW8-lkTAP/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/18scpOhpCP8YMp5NQlxWAnkCktYOQfDUI/view?usp=drive_link",
+      "releaseDate": "2026-01-10"
+    },
+    {
+      "id": "whos-rem",
+      "title": "whos rem",
+      "genre": "Vocaloid",
+      "cover": "https://drive.google.com/file/d/1Xe42pTQYRmWsRCgMFsDdNCfVSy7smWw6/view?usp=drive_link",
+      "audioUrl": "https://drive.google.com/file/d/12HChhYbma7LKPNsx2R9hO-FTBWl8envC/view?usp=drive_link",
+      "releaseDate": "2025-12-28"
+    }
+  ]
+}

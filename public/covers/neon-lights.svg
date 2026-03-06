@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#7C3AED"/>
+  <circle cx="200" cy="160" r="80" fill="#C084FC" opacity="0.3"/>
+  <text x="200" y="280" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="white">Neon Lights</text>
+  <text x="200" y="310" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white" opacity="0.5">Jr Prod</text>
+</svg>

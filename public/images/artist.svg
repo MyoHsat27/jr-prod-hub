@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#1a1a2e"/>
+  <circle cx="200" cy="180" r="70" fill="#a855f7" opacity="0.3"/>
+  <circle cx="200" cy="180" r="50" fill="#a855f7" opacity="0.2"/>
+  <text x="200" y="340" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="bold" fill="white">Jr Prod</text>
+  <text x="200" y="370" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white" opacity="0.5">Artist Photo</text>
+</svg>
