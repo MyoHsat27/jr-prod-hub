@@ -19,21 +19,18 @@ interface AudioPlayerState {
 }
 
 const AudioPlayerContext = createContext<AudioPlayerState | undefined>(
-  undefined
+  undefined,
 );
 
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  // Use a ref so playTrack doesn't depend on currentTrack state
   const currentTrackRef = useRef<Track | null>(null);
 
   const playTrack = useCallback((track: Track) => {
     if (currentTrackRef.current?.id === track.id) {
-      // Same track: toggle play/pause
       setIsPlaying((prev) => !prev);
     } else {
-      // Different track: switch and play
       currentTrackRef.current = track;
       setCurrentTrack(track);
       setIsPlaying(true);
@@ -64,7 +61,9 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 export function useAudioPlayer() {
   const context = useContext(AudioPlayerContext);
   if (!context) {
-    throw new Error("useAudioPlayer must be used within an AudioPlayerProvider");
+    throw new Error(
+      "useAudioPlayer must be used within an AudioPlayerProvider",
+    );
   }
   return context;
 }

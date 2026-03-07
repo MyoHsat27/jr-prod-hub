@@ -21,11 +21,9 @@ export default function AudioPlayer() {
     return `${m}:${s.toString().padStart(2, "0")}`;
   };
 
-  // Create or switch tracks
   useEffect(() => {
     const container = waveformRef.current;
 
-    // No track — clean up
     if (!currentTrack || !container) {
       if (wavesurferRef.current) {
         wavesurferRef.current.destroy();
@@ -38,12 +36,10 @@ export default function AudioPlayer() {
       return;
     }
 
-    // Same track already loaded — nothing to do
     if (loadedTrackIdRef.current === currentTrack.id && wavesurferRef.current) {
       return;
     }
 
-    // Destroy previous instance before creating a new one
     if (wavesurferRef.current) {
       wavesurferRef.current.destroy();
       wavesurferRef.current = null;
@@ -96,7 +92,6 @@ export default function AudioPlayer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrack?.id, currentTrack?.audioUrl]);
 
-  // Sync play/pause state with WaveSurfer
   useEffect(() => {
     const ws = wavesurferRef.current;
     if (!ws || !ready) return;
@@ -161,7 +156,11 @@ export default function AudioPlayer() {
               <rect x="14" y="4" width="4" height="16" />
             </svg>
           ) : (
-            <svg className="ml-0.5 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="ml-0.5 h-4 w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M8 5v14l11-7z" />
             </svg>
           )}
@@ -210,8 +209,18 @@ export default function AudioPlayer() {
           className="shrink-0 text-neutral-600 transition-colors hover:text-cyber-magenta"
           aria-label="Close player"
         >
-          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>

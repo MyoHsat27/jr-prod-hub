@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import tracksData from "@/data/tracks.json";
+import { getRawTrackById } from "@/lib/audio";
 
 /**
  * Extracts Google Drive file ID from various URL formats.
@@ -18,10 +18,10 @@ function getGoogleDriveDirectUrl(url: string): string | null {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const track = tracksData.tracks.find((t) => t.id === id);
+  const track = await getRawTrackById(id);
 
   if (!track) {
     return NextResponse.json({ error: "Track not found" }, { status: 404 });
@@ -42,12 +42,11 @@ export async function GET(
     if (!response.ok) {
       return NextResponse.json(
         { error: "Failed to fetch cover" },
-        { status: response.status }
+        { status: response.status },
       );
     }
 
-    const contentType =
-      response.headers.get("content-type") || "image/jpeg";
+    const contentType = response.headers.get("content-type") || "image/jpeg";
     const contentLength = response.headers.get("content-length");
 
     const headers: Record<string, string> = {
@@ -64,7 +63,7 @@ export async function GET(
   } catch {
     return NextResponse.json(
       { error: "Failed to proxy cover image" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

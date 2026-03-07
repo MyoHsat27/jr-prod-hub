@@ -38,10 +38,13 @@ export default function GlitchText({
 
   // Random glitch trigger
   useEffect(() => {
-    const interval = setInterval(() => {
-      setGlitching(true);
-      setTimeout(() => setGlitching(false), 200);
-    }, 4000 + Math.random() * 3000);
+    const interval = setInterval(
+      () => {
+        setGlitching(true);
+        setTimeout(() => setGlitching(false), 200);
+      },
+      4000 + Math.random() * 3000,
+    );
     return () => clearInterval(interval);
   }, []);
 

@@ -1,9 +1,8 @@
 import { Track } from "./types";
-import tracksData from "@/data/tracks.json";
+import { readTracks as readTracksFromDrive } from "./gdrive";
 
 /**
  * Resolves Google Drive URLs through our API proxy to avoid CORS.
- * Non-Google-Drive URLs (CDN, local, etc.) are returned as-is.
  */
 function isGoogleDriveUrl(url: string): boolean {
   return url.includes("drive.google.com");
@@ -19,32 +18,50 @@ function resolveTrack(track: Track): Track {
   return { ...track, audioUrl, cover };
 }
 
-export function getAllTracks(): Track[] {
-  return tracksData.tracks.map(resolveTrack);
+async function fetchTracks(): Promise<Track[]> {
+  const data = await readTracksFromDrive();
+  return data.tracks as unknown as Track[];
 }
 
-export function getFeaturedTrack(): Track {
-  const featured = tracksData.tracks.find((t) => t.featured);
-  return resolveTrack(featured || tracksData.tracks[0]);
+export async function getAllTracks(): Promise<Track[]> {
+  const tracks = await fetchTracks();
+  return tracks.map(resolveTrack);
 }
 
-export function getTrackById(id: string): Track | undefined {
-  const track = tracksData.tracks.find((t) => t.id === id);
+export async function getFeaturedTrack(): Promise<Track> {
+  const tracks = await fetchTracks();
+  const featured = tracks.find((t) => t.featured);
+  return resolveTrack(featured || tracks[0]);
+}
+
+export async function getTrackById(id: string): Promise<Track | undefined> {
+  const tracks = await fetchTracks();
+  const track = tracks.find((t) => t.id === id);
   return track ? resolveTrack(track) : undefined;
 }
 
-export function getTracksByGenre(genre: string): Track[] {
-  return tracksData.tracks
+export async function getTracksByGenre(genre: string): Promise<Track[]> {
+  const tracks = await fetchTracks();
+  return tracks
     .filter((track) => track.genre.toLowerCase() === genre.toLowerCase())
     .map(resolveTrack);
 }
 
-export function getLatestTracks(count: number = 4): Track[] {
-  return [...tracksData.tracks]
+export async function getLatestTracks(count: number = 4): Promise<Track[]> {
+  const tracks = await fetchTracks();
+  return [...tracks]
     .sort(
       (a, b) =>
         new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(),
     )
     .slice(0, count)
     .map(resolveTrack);
+}
+
+/**
+ * Get raw track data (without resolving URLs) for proxy routes.
+ */
+export async function getRawTrackById(id: string): Promise<Track | undefined> {
+  const tracks = await fetchTracks();
+  return tracks.find((t) => t.id === id);
 }

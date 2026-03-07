@@ -1,11 +1,15 @@
 import LinksClient from "./LinksClient";
-import socialsData from "@/data/socials.json";
+import { readSocials } from "@/lib/gdrive";
+import { SocialLink } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Links | Jr Prod",
   description: "Connect with Jr Prod on all platforms.",
 };
 
-export default function LinksPage() {
-  return <LinksClient socials={socialsData.socials} />;
+export default async function LinksPage() {
+  const data = await readSocials();
+  return <LinksClient socials={data.socials as unknown as SocialLink[]} />;
 }

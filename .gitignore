@@ -30,6 +30,8 @@ yarn-error.log*
 
 # env files
 .env*.local
+*.json.key
+jr-prod-*.json
 
 # vercel
 .vercel

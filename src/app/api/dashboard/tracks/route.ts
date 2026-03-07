@@ -1,18 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/auth";
-import fs from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "src/data/tracks.json");
-
-function readTracks() {
-  const raw = fs.readFileSync(DATA_FILE, "utf-8");
-  return JSON.parse(raw);
-}
-
-function writeTracks(data: { tracks: Array<Record<string, unknown>> }) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2) + "\n");
-}
+import { readTracks, writeTracks } from "@/lib/gdrive";
 
 function slugify(text: string): string {
   return text
@@ -26,7 +14,7 @@ export async function GET() {
   if (!authed) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const data = readTracks();
+  const data = await readTracks();
   return NextResponse.json(data);
 }
 
@@ -47,18 +35,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const data = readTracks();
+    const data = await readTracks();
     const id = slugify(title);
 
-    // Check for duplicate ID
-    if (data.tracks.some((t: { id: string }) => t.id === id)) {
+    if (data.tracks.some((t: Record<string, unknown>) => t.id === id)) {
       return NextResponse.json(
         { error: "A track with a similar title already exists" },
         { status: 409 },
       );
     }
 
-    // If this track is featured, unfeatured all others
     if (featured) {
       data.tracks = data.tracks.map((t: Record<string, unknown>) => ({
         ...t,
@@ -77,7 +63,7 @@ export async function POST(request: NextRequest) {
     };
 
     data.tracks.unshift(newTrack);
-    writeTracks(data);
+    await writeTracks(data);
 
     return NextResponse.json(newTrack, { status: 201 });
   } catch {

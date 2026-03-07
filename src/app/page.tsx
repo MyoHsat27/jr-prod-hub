@@ -4,9 +4,11 @@ import { getLatestTracks, getFeaturedTrack } from "@/lib/audio";
 import FeaturedTrackPlayer from "@/components/ui/FeaturedTrackPlayer";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-export default function HomePage() {
-  const latestTracks = getLatestTracks(4);
-  const featuredTrack = getFeaturedTrack();
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const latestTracks = await getLatestTracks(4);
+  const featuredTrack = await getFeaturedTrack();
 
   return (
     <>
@@ -14,11 +16,7 @@ export default function HomePage() {
 
       {/* Featured track */}
       <section className="relative mx-auto max-w-7xl px-6 py-20">
-        <SectionHeader
-          label="Featured"
-          title="Primary Signal"
-          href=""
-        />
+        <SectionHeader label="Featured" title="Primary Signal" href="" />
         <FeaturedTrackPlayer track={featuredTrack} />
       </section>
 
